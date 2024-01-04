@@ -1,14 +1,25 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+
     public void NextScene()
     {
+        int maxSceneCount = SceneManager.sceneCountInBuildSettings;
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1);
+
+        if (currentSceneIndex + 1 < maxSceneCount)
+        {
+            SceneManager.LoadScene(currentSceneIndex + 1);
+        }
+        else
+        {
+            Debug.Log("Maksimum seviyeye ulaşıldı!");
+           
+        }
 
     }
 

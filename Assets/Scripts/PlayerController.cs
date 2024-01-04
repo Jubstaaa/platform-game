@@ -8,18 +8,19 @@ public class PlayerController : MonoBehaviour
 {
     private float mySpeedX;
     private Rigidbody2D rb;
-    [SerializeField] float moveSpeed = 5f;
+    private float moveSpeed = 6f;
     private Vector3 ls;
     public bool onGround;
     private bool canDoubleJump;
     [SerializeField] GameObject arrow;
     private bool canFire = true;
     private Animator myAnimator;
-    private int arrowAmmo = 3;
+    [SerializeField] int arrowAmmo;
     [SerializeField] TextMeshProUGUI arrowAmmoText;
     [SerializeField] AudioClip deathMusic;
     [SerializeField] TextMeshProUGUI scoreText;
-    [SerializeField] GameObject winPanel,losePanel;
+    [SerializeField] TextMeshProUGUI enemyText;
+    [SerializeField] GameObject losePanel;
 
 
     void Start()
@@ -33,7 +34,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        
+        enemyText.text = EnemyController.totalEnemyNumber.ToString();
+
         Move();
 
         if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
@@ -50,8 +52,6 @@ public class PlayerController : MonoBehaviour
             canFire = false;
             Invoke("ResetFire", 1.0f); 
         }
-
-
     }
 
     private void FireArrow()
@@ -146,14 +146,13 @@ public class PlayerController : MonoBehaviour
             Die();
 
         }
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-       if (collision.gameObject.tag == "Finish")
+        else if (collision.gameObject.tag == "Thorny")
         {
-            winPanel.SetActive(true);
+            Die();
+
         }
+
     }
+
+  
 }

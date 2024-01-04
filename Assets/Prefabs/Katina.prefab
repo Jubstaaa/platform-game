@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945830887248682504}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.84, y: -0.99, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1.4009}
   m_ConstrainProportionsScale: 0
@@ -222,7 +222,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &355152692524821155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +235,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bdc78a124a34e40bbcdfb2707f769a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementType: 1
   onGround: 0
   obstacle:
     serializedVersion: 2
     m_Bits: 8
+  speed: 2
+  moveDuration: 1
